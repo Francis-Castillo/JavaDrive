@@ -1,0 +1,4 @@
+COCHE;1234ABC;Seat;Leon;true;Familiar;5
+COCHE;5678DEF;Fiat;500;true;Pequeño;4
+COCHE;9012GHI;Porsche;911;false;Deportivo;2
+FURGONETA;1122JKL;Ford;Transit;true;true;1200
