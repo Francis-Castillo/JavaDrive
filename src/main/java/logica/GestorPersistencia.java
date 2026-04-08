@@ -48,6 +48,35 @@ public class GestorPersistencia {
 
     }
 
+    public List<Cliente> cargarClientes() {
+        List<Cliente> lista = new ArrayList<>();
+
+        try (Scanner sc = new Scanner(new File("clientes.txt"))){
+            while (sc.hasNextLine()) {
+                String [] campos = sc.nextLine().split(";");
+                lista.add(new Cliente(campos[0], campos[1], campos[2]));
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cargar los vehiculos");
+
+        }
+        return lista;
+    }
+
+    public void guardarClientes(List<Cliente> clientes) {
+
+        try (PrintWriter pw = new PrintWriter("clientes.txt")) {
+            for (Cliente c : clientes) {
+               pw.println(c.getDni()+";"+c.getNombre()+";"+c.getTelefono());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
     public void exportarTicket(Reserva reserva) {
         String nombreArchivo = "reservas_"+ reserva.getIdReserva() +".txt";
 

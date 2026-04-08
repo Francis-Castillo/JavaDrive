@@ -25,6 +25,7 @@ public class Main {
 
         do {
             opcion = mostrarMenu();
+            sc.nextLine();
             switch (opcion) {
                 case 1:
                     crearCliente();
@@ -41,6 +42,7 @@ public class Main {
                 case 5:
                     for (Cliente c : clientes) {
                         System.out.println(c);
+                        System.out.println("----------------------------------------");
                     }
                     break;
                     case 6:
@@ -63,6 +65,7 @@ public class Main {
         System.out.println("6. Salir");
         System.out.println("\nElegir una opcion:");
         return sc.nextInt();
+
     }
 
     public static void pedirDatosReserva(){
@@ -89,7 +92,6 @@ public class Main {
     public static void crearCliente() {
         System.out.println("DNI: ");
         String dni = sc.nextLine();
-        sc.nextLine();
 
         System.out.println("Nombre: ");
         String nombre = sc.nextLine();
@@ -183,9 +185,11 @@ public class Main {
 
     public static void cargarDatos() {
         flota = gestor.cargarVehiculos();
+        clientes = gestor.cargarClientes();
     }
     public static void guardarDatos() {
         gestor.guardarVehiculos(flota);
+        gestor.guardarClientes(clientes);
     }
 
     public static void exportarTicket(Reserva reserva) {
