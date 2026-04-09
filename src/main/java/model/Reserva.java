@@ -18,6 +18,11 @@ public class Reserva {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
     }
+    public static void setNextId(int next) {
+        if (next > 0) {
+            nextId = next;
+        }
+    }
     public String GenerarLineaTicket(){
         long totalDias = ChronoUnit.DAYS.between(fechaInicio, fechaFin);
         return

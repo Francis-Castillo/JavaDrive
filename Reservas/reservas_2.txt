@@ -1,0 +1,25 @@
+============================================
+ CONTRATO DE ALQUILER - JAVADRIVE
+============================================
+ID RESERVA: 2
+FECHA EMISIÓN: 2026-04-09
+--------------------------------------------
+DATOS DEL CLIENTE:
+Nombre: Luis Fernandez
+DNI: 56789012E
+Teléfono: 644555666
+--------------------------------------------
+DATOS DEL VEHÍCULO: 
+Marca y Modelo: Fiat 500
+Matrícula: 5678DEF
+
+Detalles: 
+Coche [Pequeño]
+Nº Plazas: 4
+--------------------------------------------
+PERIODO DE ALQUILER: 
+Fecha de recogida: 2026-04-09
+Fecha de devolución: 2026-04-19
+Total días: 10
+--------------------------------------------
+ESTADO: Confirmado y Pendiente de pago

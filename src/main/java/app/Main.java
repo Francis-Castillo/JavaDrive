@@ -219,6 +219,7 @@ public class Main {
     public static void cargarDatos() {
         flota = gestor.cargarVehiculos();
         clientes = gestor.cargarClientes();
+        Reserva.setNextId(gestor.calcularSiguienteIdReserva());
     }
     public static void guardarDatos() {
         gestor.guardarVehiculos(flota);
