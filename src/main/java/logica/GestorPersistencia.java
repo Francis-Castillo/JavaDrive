@@ -7,6 +7,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GestorPersistencia {
     public List<Vehiculo> cargarVehiculos() {
@@ -78,14 +80,44 @@ public class GestorPersistencia {
 
 
     public void exportarTicket(Reserva reserva) {
+        String carpeta = "Reservas";
+        File dir = new File(carpeta);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
         String nombreArchivo = "reservas_"+ reserva.getIdReserva() +".txt";
-
-        try (PrintWriter pw = new PrintWriter(nombreArchivo)) {
+        File destino = new File(dir, nombreArchivo);
+        try (PrintWriter pw = new PrintWriter(destino)) {
             pw.print(reserva.GenerarLineaTicket());
-            System.out.println("Ticket generado con éxito: " + nombreArchivo);
+            System.out.println("Ticket generado con éxito: " + destino.getPath());
         } catch (Exception e) {
             System.out.println("Error al exportar el ticket: " + e.getMessage());
         }
+    }
+
+    public int calcularSiguienteIdReserva() {
+        String carpeta = "Reservas";
+        File dir = new File(carpeta);
+        if (!dir.exists()) {
+            dir.mkdirs();
+            return 1; // No había carpeta ni archivos
+        }
+        int maxId = 0;
+        Pattern p = Pattern.compile("reservas_([0-9]+)\\.txt");
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                Matcher m = p.matcher(f.getName());
+                if (m.matches()) {
+                    try {
+                        int id = Integer.parseInt(m.group(1));
+                        if (id > maxId) maxId = id;
+                    } catch (NumberFormatException ignore) {
+                    }
+                }
+            }
+        }
+        return maxId + 1;
     }
 
 }
